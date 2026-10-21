@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aesthetic Portfolio</title>
+
+    <style>
+        /* ---------- BASIC RESET ---------- */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            line-height: 1.6;
+            transition: 0.4s;
+        }
+
+        /* ---------- NAVBAR ---------- */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 8%;
+
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #a78bfa;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a78bfa;
+        }
+
+        #themeBtn {
+            border: none;
+            background: #7c3aed;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 100px 20px;
+
+            background:
+                radial-gradient(circle at top left, #4c1d95, transparent 35%),
+                radial-gradient(circle at bottom right, #164e63, transparent 35%),
+                #0f172a;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #a78bfa;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #7c3aed;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        /* ---------- COMMON SECTION ---------- */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #a78bfa;
+        }
+
+        /* ---------- ABOUT ---------- */
+
+        .about {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .about p {
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        /* ---------- SKILLS ---------- */
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .skill-card {
+            padding: 30px;
+            text-align: center;
+
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.4s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: rgba(124, 58, 237, 0.2);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+            color: #c4b5fd;
+        }
+
+        /* ---------- PROJECTS ---------- */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 30px;
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+
+            transition: 0.4s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.03);
+        }
+
+        .project-card h3 {
+            color: #c4b5fd;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #cbd5e1;
+        }
+
+        /* ---------- CONTACT ---------- */
+
+        .contact-form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+
+            border: none;
+            outline: none;
+            border-radius: 12px;
+
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contact-form button {
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #020617;
+            color: #94a3b8;
+        }
+
+        /* ---------- LIGHT MODE ---------- */
+
+        body.light {
+            background: #f8fafc;
+            color: #111827;
+        }
+
+        body.light nav {
+            background: rgba(255,255,255,0.8);
+        }
+
+        body.light nav ul li a {
+            color: #111827;
+        }
+
+        body.light .hero {
+            background:
+                radial-gradient(circle at top left, #ddd6fe, transparent 35%),
+                radial-gradient(circle at bottom right, #bae6fd, transparent 35%),
+                #f8fafc;
+        }
+
+        body.light .hero p,
+        body.light .about p,
+        body.light .project-card p {
+            color: #475569;
+        }
+
+        body.light .skill-card,
+        body.light .project-card {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid #e2e8f0;
+        }
+
+        body.light .contact-form input,
+        body.light .contact-form textarea {
+            background: white;
+            color: #111827;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 900px) {
+
+            nav ul {
+                gap: 12px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ---------- NAVBAR ---------- -->
+
+    <nav>
+
+        <div class="logo">MySpace.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button id="themeBtn">☀️</button>
+
+    </nav>
+
+
+    <!-- ---------- HOME ---------- -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Hello, I'm <span>Harika</span>
+            </h1>
+
+            <p>
+                A Creative Student & Future Developer
+            </p>
+
+            <a href="#projects" class="btn">
+                Explore My Work
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- ABOUT ---------- -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <div class="about">
+
+            <p>
+                Welcome to my personal website.
+                I am passionate about technology, programming
+                and creating beautiful digital experiences.
+                I enjoy learning new technologies and
+                developing creative projects using HTML,
+                CSS and JavaScript.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- SKILLS ---------- -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            My <span>Skills</span>
+        </h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h3>HTML</h3>
+                <p>Building structured web pages.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>CSS</h3>
+                <p>Creating beautiful responsive designs.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <p>Adding interactive functionality.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Python</h3>
+                <p>Programming and problem solving.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- PROJECTS ---------- -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            My <span>Projects</span>
+        </h2>
+
+        <div class="projects">
+
+            <div class="project-card">
+
+                <h3>🌐 Portfolio Website</h3>
+
+                <p>
+                    A modern personal portfolio website
+                    created using HTML, CSS and JavaScript.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>🎨 Calculator</h3>
+
+                <p>
+                    A beautiful interactive calculator
+                    developed using JavaScript.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>✨ To-Do App</h3>
+
+                <p>
+                    A simple task management application
+                    with an aesthetic user interface.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- CONTACT ---------- -->
+
+    <section id="contact">
+
+        <h2 class="section-title">
+            Contact <span>Me</span>
+        </h2>
+
+        <form class="contact-form" id="contactForm">
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <textarea
+                placeholder="Your Message"
+                required
+            ></textarea>
+
+            <button class="btn" type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- ---------- FOOTER ---------- -->
+
+    <footer>
+
+        <p>
+            © 2026 Harika | Made with ❤️ using HTML, CSS & JavaScript
+        </p>
+
+    </footer>
+
+
+    <!-- ---------- JAVASCRIPT ---------- -->
+
+    <script>
+
+        // Dark / Light Mode
+
+        const themeBtn = document.getElementById("themeBtn");
+
+        themeBtn.addEventListener("click", function () {
+
+            document.body.classList.toggle("light");
+
+            if (document.body.classList.contains("light")) {
+                themeBtn.textContent = "🌙";
+            } else {
+                themeBtn.textContent = "☀️";
+            }
+
+        });
+
+
+        // Contact Form
+
+        const form = document.getElementById("contactForm");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            alert("Thank you! Your message has been submitted.");
+
+            form.reset();
+
+        });
+
+
+        // Welcome Message
+
+        window.addEventListener("load", function() {
+
+            console.log("Welcome to Harika's Website!");
+
+        });
+
+    </script>
+
+</body>
+</html>

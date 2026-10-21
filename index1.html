@@ -1,0 +1,1191 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glamora - Girls Fashion Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff8fb;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #e91e63;
+        }
+
+        .icons {
+            display: flex;
+            gap: 18px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 500px;
+            padding: 80px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(120deg, #ffe4ef, #fff4f8);
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h1 {
+            font-size: 55px;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: #e91e63;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .shop-btn {
+            background: #e91e63;
+            color: white;
+            padding: 15px 32px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .shop-btn:hover {
+            background: #c2185b;
+        }
+
+        .hero-image {
+            font-size: 190px;
+        }
+
+        /* CATEGORIES */
+        .section {
+            padding: 60px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 35px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-7px);
+        }
+
+        .category-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+
+        .search-box input {
+            width: 60%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        /* FILTER */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid #e91e63;
+            background: white;
+            color: #e91e63;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #e91e63;
+            color: white;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-img {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffeaf2;
+            font-size: 100px;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            color: #ffb400;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #e91e63;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 8px;
+            font-size: 14px;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .cart-btn {
+            flex: 1;
+            padding: 11px;
+            border: none;
+            border-radius: 20px;
+            background: #e91e63;
+            color: white;
+            cursor: pointer;
+        }
+
+        .wishlist {
+            width: 45px;
+            border: none;
+            border-radius: 20px;
+            background: #ffe5ee;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* OFFER */
+        .offer {
+            margin: 20px 7% 60px;
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            background: linear-gradient(120deg, #e91e63, #ad1457);
+            color: white;
+        }
+
+        .offer h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .offer p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .offer button {
+            padding: 13px 28px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: #e91e63;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: white;
+            padding: 50px 7%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        footer h3 {
+            color: #ff80ab;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            color: #ddd;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 35px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
+
+        /* CART */
+        .cart-panel {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 360px;
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            padding: 25px;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            transition: 0.4s;
+            overflow-y: auto;
+        }
+
+        .cart-panel.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .close-cart {
+            border: none;
+            background: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .checkout {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: #e91e63;
+            color: white;
+            border-radius: 25px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+        @media(max-width: 768px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                text-align: center;
+                flex-direction: column;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .hero-image {
+                font-size: 100px;
+                margin-top: 30px;
+            }
+
+            .search-box input {
+                width: 90%;
+            }
+
+            .cart-panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo">Glamora ✨</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Shop</a>
+        <a href="#offers">Offers</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="icons">
+        <span onclick="openCart()">🛒</span>
+        <span>♡</span>
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <h1>
+            Fashion Made
+            <span>Beautiful</span>
+        </h1>
+
+        <p>
+            Discover the latest girls fashion, stylish dresses,
+            accessories, footwear, jewellery and beauty essentials
+            all in one place.
+        </p>
+
+        <button class="shop-btn"
+                onclick="document.getElementById('products').scrollIntoView()">
+            Shop Now
+        </button>
+
+    </div>
+
+    <div class="hero-image">
+        👗
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+
+    <h2 class="section-title">
+        Shop By Category
+    </h2>
+
+    <div class="categories">
+
+        <div class="category" onclick="filterProducts('dress')">
+            <div class="category-icon">👗</div>
+            <h3>Dresses</h3>
+        </div>
+
+        <div class="category" onclick="filterProducts('top')">
+            <div class="category-icon">👚</div>
+            <h3>Tops</h3>
+        </div>
+
+        <div class="category" onclick="filterProducts('jeans')">
+            <div class="category-icon">👖</div>
+            <h3>Jeans</h3>
+        </div>
+
+        <div class="category" onclick="filterProducts('saree')">
+            <div class="category-icon">🥻</div>
+            <h3>Sarees</h3>
+        </div>
+
+        <div class="category" onclick="filterProducts('shoes')">
+            <div class="category-icon">👠</div>
+            <h3>Footwear</h3>
+        </div>
+
+        <div class="category" onclick="filterProducts('bag')">
+            <div class="category-icon">👜</div>
+            <h3>Bags</h3>
+        </div>
+
+        <div class="category" onclick="filterProducts('jewellery')">
+            <div class="category-icon">💍</div>
+            <h3>Jewellery</h3>
+        </div>
+
+        <div class="category" onclick="filterProducts('beauty')">
+            <div class="category-icon">💄</div>
+            <h3>Beauty</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+
+    <h2 class="section-title">
+        Trending Fashion
+    </h2>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search dresses, tops, bags..."
+            onkeyup="searchProducts()"
+        >
+
+    </div>
+
+
+    <!-- FILTER BUTTONS -->
+    <div class="filters">
+
+        <button class="filter-btn active"
+                onclick="filterProducts('all')">
+            All
+        </button>
+
+        <button class="filter-btn"
+                onclick="filterProducts('dress')">
+            Dresses
+        </button>
+
+        <button class="filter-btn"
+                onclick="filterProducts('top')">
+            Tops
+        </button>
+
+        <button class="filter-btn"
+                onclick="filterProducts('jeans')">
+            Jeans
+        </button>
+
+        <button class="filter-btn"
+                onclick="filterProducts('saree')">
+            Sarees
+        </button>
+
+        <button class="filter-btn"
+                onclick="filterProducts('shoes')">
+            Footwear
+        </button>
+
+        <button class="filter-btn"
+                onclick="filterProducts('bag')">
+            Bags
+        </button>
+
+        <button class="filter-btn"
+                onclick="filterProducts('jewellery')">
+            Jewellery
+        </button>
+
+        <button class="filter-btn"
+                onclick="filterProducts('beauty')">
+            Beauty
+        </button>
+
+    </div>
+
+
+    <!-- PRODUCT GRID -->
+    <div class="products" id="productContainer">
+
+
+        <!-- PRODUCT 1 -->
+        <div class="product" data-category="dress"
+             data-name="Floral Summer Dress">
+
+            <div class="product-img">
+                👗
+            </div>
+
+            <div class="product-info">
+
+                <h3>Floral Summer Dress</h3>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <span class="price">₹899</span>
+                <span class="old-price">₹1499</span>
+
+                <div class="product-buttons">
+
+                    <button class="cart-btn"
+                            onclick="addToCart('Floral Summer Dress',899)">
+                        Add to Cart
+                    </button>
+
+                    <button class="wishlist">
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+        <div class="product" data-category="top"
+             data-name="Stylish Crop Top">
+
+            <div class="product-img">
+                👚
+            </div>
+
+            <div class="product-info">
+
+                <h3>Stylish Crop Top</h3>
+
+                <div class="rating">
+                    ★★★★☆
+                </div>
+
+                <span class="price">₹499</span>
+                <span class="old-price">₹799</span>
+
+                <div class="product-buttons">
+
+                    <button class="cart-btn"
+                            onclick="addToCart('Stylish Crop Top',499)">
+                        Add to Cart
+                    </button>
+
+                    <button class="wishlist">
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+        <div class="product" data-category="jeans"
+             data-name="High Waist Jeans">
+
+            <div class="product-img">
+                👖
+            </div>
+
+            <div class="product-info">
+
+                <h3>High Waist Jeans</h3>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <span class="price">₹1199</span>
+                <span class="old-price">₹1799</span>
+
+                <div class="product-buttons">
+
+                    <button class="cart-btn"
+                            onclick="addToCart('High Waist Jeans',1199)">
+                        Add to Cart
+                    </button>
+
+                    <button class="wishlist">
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+        <div class="product" data-category="saree"
+             data-name="Designer Saree">
+
+            <div class="product-img">
+                🥻
+            </div>
+
+            <div class="product-info">
+
+                <h3>Designer Saree</h3>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <span class="price">₹1599</span>
+                <span class="old-price">₹2499</span>
+
+                <div class="product-buttons">
+
+                    <button class="cart-btn"
+                            onclick="addToCart('Designer Saree',1599)">
+                        Add to Cart
+                    </button>
+
+                    <button class="wishlist">
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 5 -->
+        <div class="product" data-category="shoes"
+             data-name="Women Heels">
+
+            <div class="product-img">
+                👠
+            </div>
+
+            <div class="product-info">
+
+                <h3>Women Heels</h3>
+
+                <div class="rating">
+                    ★★★★☆
+                </div>
+
+                <span class="price">₹999</span>
+                <span class="old-price">₹1499</span>
+
+                <div class="product-buttons">
+
+                    <button class="cart-btn"
+                            onclick="addToCart('Women Heels',999)">
+                        Add to Cart
+                    </button>
+
+                    <button class="wishlist">
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 6 -->
+        <div class="product" data-category="bag"
+             data-name="Luxury Handbag">
+
+            <div class="product-img">
+                👜
+            </div>
+
+            <div class="product-info">
+
+                <h3>Luxury Handbag</h3>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <span class="price">₹799</span>
+                <span class="old-price">₹1299</span>
+
+                <div class="product-buttons">
+
+                    <button class="cart-btn"
+                            onclick="addToCart('Luxury Handbag',799)">
+                        Add to Cart
+                    </button>
+
+                    <button class="wishlist">
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 7 -->
+        <div class="product" data-category="jewellery"
+             data-name="Elegant Necklace">
+
+            <div class="product-img">
+                💍
+            </div>
+
+            <div class="product-info">
+
+                <h3>Elegant Necklace</h3>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <span class="price">₹599</span>
+                <span class="old-price">₹999</span>
+
+                <div class="product-buttons">
+
+                    <button class="cart-btn"
+                            onclick="addToCart('Elegant Necklace',599)">
+                        Add to Cart
+                    </button>
+
+                    <button class="wishlist">
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 8 -->
+        <div class="product" data-category="beauty"
+             data-name="Beauty Makeup Kit">
+
+            <div class="product-img">
+                💄
+            </div>
+
+            <div class="product-info">
+
+                <h3>Beauty Makeup Kit</h3>
+
+                <div class="rating">
+                    ★★★★☆
+                </div>
+
+                <span class="price">₹699</span>
+                <span class="old-price">₹999</span>
+
+                <div class="product-buttons">
+
+                    <button class="cart-btn"
+                            onclick="addToCart('Beauty Makeup Kit',699)">
+                        Add to Cart
+                    </button>
+
+                    <button class="wishlist">
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- OFFER -->
+<section class="offer" id="offers">
+
+    <h2>✨ Fashion Sale Up To 50% OFF ✨</h2>
+
+    <p>
+        Upgrade your wardrobe with our latest collection.
+    </p>
+
+    <button onclick="alert('Offer applied!')">
+        Shop Offers
+    </button>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer id="contact">
+
+    <div class="footer-content">
+
+        <div>
+            <h3>Glamora</h3>
+            <p>Your one-stop girls fashion destination.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <p>Home</p>
+            <p>Shop</p>
+            <p>Offers</p>
+            <p>Contact</p>
+        </div>
+
+        <div>
+            <h3>Categories</h3>
+            <p>Dresses</p>
+            <p>Footwear</p>
+            <p>Bags</p>
+            <p>Jewellery</p>
+        </div>
+
+        <div>
+            <h3>Customer Care</h3>
+            <p>📞 1800-123-456</p>
+            <p>📧 support@glamora.com</p>
+            <p>🚚 Track Order</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Glamora Fashion Store | All Rights Reserved
+    </div>
+
+</footer>
+
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+
+        <h2>🛒 My Cart</h2>
+
+        <button class="close-cart"
+                onclick="closeCart()">
+            ×
+        </button>
+
+    </div>
+
+    <div id="cartItems">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <h3 id="cartTotal">
+        Total: ₹0
+    </h3>
+
+    <button class="checkout"
+            onclick="checkout()">
+        Proceed to Checkout
+    </button>
+
+</div>
+
+
+<script>
+
+    let cart = [];
+
+    /* ADD TO CART */
+
+    function addToCart(name, price) {
+
+        cart.push({
+            name: name,
+            price: price
+        });
+
+        updateCart();
+
+        alert(name + " added to cart!");
+
+    }
+
+
+    /* UPDATE CART */
+
+    function updateCart() {
+
+        const cartItems =
+            document.getElementById("cartItems");
+
+        const cartTotal =
+            document.getElementById("cartTotal");
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML =
+                "<p>Your cart is empty.</p>";
+
+            cartTotal.innerHTML =
+                "Total: ₹0";
+
+            return;
+        }
+
+        cartItems.innerHTML = "";
+
+        let total = 0;
+
+        cart.forEach((item, index) => {
+
+            total += item.price;
+
+            cartItems.innerHTML += `
+
+                <div class="cart-item">
+
+                    <strong>${item.name}</strong>
+
+                    <p>₹${item.price}</p>
+
+                    <button
+                        onclick="removeItem(${index})">
+                        Remove
+                    </button>
+
+                </div>
+
+            `;
+
+        });
+
+        cartTotal.innerHTML =
+            "Total: ₹" + total;
+
+    }
+
+
+    /* REMOVE CART ITEM */
+
+    function removeItem(index) {
+
+        cart.splice(index, 1);
+
+        updateCart();
+
+    }
+
+
+    /* OPEN CART */
+
+    function openCart() {
+
+        document
+            .getElementById("cartPanel")
+            .classList.add("open");
+
+    }
+
+
+    /* CLOSE CART */
+
+    function closeCart() {
+
+        document
+            .getElementById("cartPanel")
+            .classList.remove("open");
+
+    }
+
+
+    /* CHECKOUT */
+
+    function checkout() {
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty!");
+
+            return;
+        }
+
+        alert(
+            "🎉 Thank you for shopping with Glamora!"
+        );
+
+    }
+
+
+    /* SEARCH PRODUCTS */
+
+    function searchProducts() {
+
+        const search =
+            document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase();
+
+        const products =
+            document.querySelectorAll(".product");
+
+        products.forEach(product => {
+
+            const name =
+                product
+                .dataset
+                .name
+                .toLowerCase();
+
+            if (name.includes(search)) {
+
+                product.style.display = "block";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* FILTER PRODUCTS */
+
+    function filterProducts(category) {
+
+        const products =
+            document.querySelectorAll(".product");
+
+        products.forEach(product => {
+
+            if (
+                category === "all" ||
+                product.dataset.category === category
+            ) {
+
+                product.style.display = "block";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* WISHLIST */
+
+    document.querySelectorAll(".wishlist")
+    .forEach(button => {
+
+        button.addEventListener("click", function() {
+
+            if (this.innerHTML === "♡") {
+
+                this.innerHTML = "❤️";
+
+            } else {
+
+                this.innerHTML = "♡";
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+```
